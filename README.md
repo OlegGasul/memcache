@@ -23,11 +23,23 @@ POST /data/{key}
 
 Body should contains data
 
+```
+curl -d "test1 test2" -X POST http://localhost:5050/data/key1
+```
+
 ### Retrieving data by key
 GET /data/{key}
+
+```
+curl http://localhost:5050/data/key1
+```
 
 ### Searching documents
 
 POST /search
 
 Body should contains tokens separated by comma (for example: "word1 word2" should find all documents contain both words)
+
+```
+curl -d "test1" -X POST  http://localhost:5050/search
+```
