@@ -1,19 +1,22 @@
-package ratpack.example.groovywebconsole
+package com.memcache2
 
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import ratpack.groovy.test.GroovyRatpackMainApplicationUnderTest
 import ratpack.http.client.ReceivedResponse
 import ratpack.test.http.TestHttpClient
-import spock.lang.Specification
 import spock.lang.AutoCleanup
+import spock.lang.Specification
 
 import static ratpack.http.MediaType.APPLICATION_FORM
 
-class ScriptExecutionSpec extends Specification {
+class DataSpec extends Specification {
 
-    @AutoCleanup def aut = new GroovyRatpackMainApplicationUnderTest()
-    @Delegate TestHttpClient client = TestHttpClient.testHttpClient(aut)
+    @AutoCleanup
+    def aut = new GroovyRatpackMainApplicationUnderTest()
+
+    @Delegate
+    TestHttpClient client = TestHttpClient.testHttpClient(aut)
 
     def setup() {
         resetRequest()
