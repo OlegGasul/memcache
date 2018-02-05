@@ -24,7 +24,6 @@ is supported in this mode. See `src/main/groovy/groovywebconsole/ReloadingThing.
 ### Setting data by key
 POST /data/{key}
 
-
 Body should contains data
 
 ### Retrieving data by key
@@ -33,6 +32,5 @@ GET /data/{key}
 ### Searching documents
 
 POST /search
-
 
 Body should contains tokens separated by comma (for example: "word1 word2" should find all documents contain both words)
