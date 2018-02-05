@@ -7,14 +7,10 @@ class MemcacheServiceImpl implements MemcacheService {
     private ConcurrentHashMap data = new ConcurrentHashMap()
     private ConcurrentHashMap<String, Set<String>> tokensCache = new ConcurrentHashMap()
 
-    MemcacheServiceImpl() {
-
-    }
-
     @Override
     void setValue(String key, String value) {
         data[key] = value
-//        addToIndex(key, value)
+        addToIndex(key, value)
     }
 
     @Override
@@ -33,7 +29,7 @@ class MemcacheServiceImpl implements MemcacheService {
 
         for (String token : tokensToSearch) {
             def tokenKeys = tokensCache[token]
-            if (tokenKeys.empty) {
+            if (!tokenKeys) {
                 return Collections.emptySet()
             }
 
