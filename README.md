@@ -38,6 +38,7 @@ curl http://localhost:5050/data/key1
 
 GET /search/{queryString}
 
+The queryString parameter should contains topics separated by space
 
 ```
 curl -d "test1" -X GET  http://localhost:5050/search/test1%20test2
