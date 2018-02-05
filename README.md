@@ -1,4 +1,5 @@
-Very simple implementation of key-value storage. 
+Very simple implementation of key-value storage. The tokens are words in document.
+For simplicity document separated on words just by space. 
 
 ## Getting Started
 

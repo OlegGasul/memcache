@@ -26,6 +26,16 @@ class MemcacheServiceImpl implements MemcacheService {
         }
     }
 
+    def filterKeys(tokensToSearch) {
+        def neededKeys = [] as Set
+        tokensToSearch.each {
+            def tokenKeys = tokensCache[it]
+            if (tokenKeys) {
+                neededKeys += tokenKeys
+            }
+        }
+    }
+
     @Override
     Set<String> search(String value) {
         if (!value) {
@@ -33,9 +43,11 @@ class MemcacheServiceImpl implements MemcacheService {
         }
 
         def resultKeys = [] as Set
-        def tokensToSearch = value.split(" ").toList().unique()
+        def tokensToSearch = value.split("\\s+").toList().unique().collect { it.toLowerCase() }
 
-        for (String token : tokensToSearch) {
+        def neededKeys = filterKeys(tokensToSearch).sort { it.size() }
+
+        for (String token : neededKeys) {
             def tokenKeys = tokensCache[token]
             if (!tokenKeys) {
                 return Collections.emptySet()
@@ -58,6 +70,7 @@ class MemcacheServiceImpl implements MemcacheService {
         def tokens = value.split(" ").toList().unique()
 
         tokens.each { token ->
+            token = token.trim().toLowerCase()
             def keys = tokensCache[token]
             if (!keys) {
                 keys = ConcurrentHashMap.newKeySet()

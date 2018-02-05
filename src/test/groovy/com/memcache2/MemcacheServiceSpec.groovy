@@ -37,7 +37,9 @@ class MemcacheServiceSpec extends Specification {
         where:
             searchString           | result
             'Search on'            | ['key1', 'key2'] as Set
+            'search on'            | ['key1', 'key2'] as Set
             'Search on to return'  | ['key2'] as Set
+            'search on to return'  | ['key2'] as Set
             'nonexistent'          | [] as Set
             'Search nonexistent'   | [] as Set
     }
