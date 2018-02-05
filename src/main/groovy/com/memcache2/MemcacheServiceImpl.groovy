@@ -43,7 +43,7 @@ class MemcacheServiceImpl implements MemcacheService {
         }
 
         def resultKeys = [] as Set
-        def tokensToSearch = value.split("\\s+").toList().unique().collect { it.toLowerCase() }
+        def tokensToSearch = value.split("\\s+").toList().collect { it.toLowerCase() }.unique()
 
         def neededKeys = filterKeys(tokensToSearch).sort { it.size() }
 
@@ -67,10 +67,9 @@ class MemcacheServiceImpl implements MemcacheService {
     }
 
     private void addToIndex(String key, String value) {
-        def tokens = value.split(" ").toList().unique()
+        def tokens = value.split("\\s+").toList().collect { it.toLowerCase() }.unique()
 
         tokens.each { token ->
-            token = token.trim().toLowerCase()
             def keys = tokensCache[token]
             if (!keys) {
                 keys = ConcurrentHashMap.newKeySet()
