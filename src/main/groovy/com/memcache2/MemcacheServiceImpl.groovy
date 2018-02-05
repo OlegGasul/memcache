@@ -4,8 +4,8 @@ import java.util.concurrent.ConcurrentHashMap
 
 class MemcacheServiceImpl implements MemcacheService {
 
-    private ConcurrentHashMap<String, String> data = new ConcurrentHashMap()
-    private ConcurrentHashMap<String, Set<String>> tokensCache = new ConcurrentHashMap()
+    private final ConcurrentHashMap<String, String> data = new ConcurrentHashMap()
+    private final ConcurrentHashMap<String, Set<String>> tokensCache = new ConcurrentHashMap()
 
     @Override
     void setValue(String key, String value) {
