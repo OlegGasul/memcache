@@ -9,6 +9,10 @@ class MemcacheServiceImpl implements MemcacheService {
 
     @Override
     void setValue(String key, String value) {
+        if (!key) {
+            throw new IllegalArgumentException("Setting null key")
+        }
+
         data[key] = value
         addToIndex(key, value)
     }
@@ -24,6 +28,10 @@ class MemcacheServiceImpl implements MemcacheService {
 
     @Override
     Set<String> search(String value) {
+        if (!value) {
+            throw new IllegalArgumentException("Searching null key")
+        }
+
         def resultKeys = [] as Set
         def tokensToSearch = value.split(" ").toList().unique()
 

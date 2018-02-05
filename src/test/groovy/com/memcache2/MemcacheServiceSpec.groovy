@@ -42,4 +42,20 @@ class MemcacheServiceSpec extends Specification {
             'Search nonexistent'   | [] as Set
     }
 
+    def "should thrown exception while setting 'null' key"() {
+        when:
+            memcacheService.setValue(null, 'test')
+
+        then:
+            thrown(IllegalArgumentException)
+    }
+
+    def "should thrown exception while searching 'null' tokens"() {
+        when:
+            memcacheService.search(null)
+
+        then:
+            thrown(IllegalArgumentException)
+    }
+
 }
