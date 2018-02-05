@@ -16,9 +16,6 @@ The Ratpack Gradle plugin has special support for [IntelliJ IDEA](http://www.jet
 
     ./gradlew idea
 
-In the “Run” menu, you will find a run configuration for launching the Ratpack app from within your IDE. Hot reloading
-is supported in this mode. See `src/main/groovy/groovywebconsole/ReloadingThing.groovy` for details.
-
 ## Working with API
 
 ### Setting data by key
