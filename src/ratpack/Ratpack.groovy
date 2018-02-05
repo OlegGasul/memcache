@@ -14,7 +14,7 @@ ratpack {
 		prefix("data/:key") {
 			insert KeyValueHandlers
 		}
-		post "search", new SearchHandler()
+		get "search/:querystring", new SearchHandler()
 	}
 
 }
